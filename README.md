@@ -62,13 +62,13 @@ cd rp_remote_analysis
 ### 2. Construire l’image Docker
 
 ```bash
-sudo docker build -t projet-duckdb-fastapi .
+sudo docker build -t rp_remote_analysis .
 ```
 
 ### 3. Lancer le conteneur avec accès au réseau host
 
 ```bash
-sudo docker run --network host projet-duckdb-fastapi
+sudo docker run --network host rp_remote_analysis
 ```
 
 > Cela permet au conteneur d’accéder à `localhost:11434` (serveur Ollama).
