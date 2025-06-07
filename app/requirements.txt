@@ -1,0 +1,10 @@
+fastapi==0.95.2
+Cython>=0.28
+uvicorn==0.22.0
+duckdb
+numpy==1.24.4
+pandas==1.5.3
+pyreadstat==1.2.6
+passlib
+python-jose
+requests

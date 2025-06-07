@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Requête SQL ou Naturelle</title>
+</head>
+<body>
+  <h1>Interrogation de la base employé</h1>
+
+  <h2>🔹 Requête SQL directe</h2>
+  <form id="sql-form">
+    <textarea id="sql-input" rows="3" cols="60" placeholder="SELECT * FROM data WHERE salaire > 3000"></textarea><br />
+    <button type="submit">Exécuter</button>
+  </form>
+
+  <h2>🔸 Question en langage naturel</h2>
+  <form id="nl-form">
+    <input id="nl-input" size="60" placeholder="Quels sont les employés de plus de 50 ans ?" /><br />
+    <button type="submit">Demander</button>
+  </form>
+
+  <pre id="result"></pre>
+
+  <script>
+    document.getElementById("sql-form").onsubmit = async (e) => {
+      e.preventDefault();
+      const sql = document.getElementById("sql-input").value;
+      const res = await fetch("/query/", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ sql })
+      });
+      document.getElementById("result").textContent = JSON.stringify(await res.json(), null, 2);
+    };
+
+    document.getElementById("nl-form").onsubmit = async (e) => {
+      e.preventDefault();
+      const question = document.getElementById("nl-input").value;
+      const res = await fetch("/ask/", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ question })
+      });
+      document.getElementById("result").textContent = JSON.stringify(await res.json(), null, 2);
+    };
+  </script>
+</body>
+</html>
