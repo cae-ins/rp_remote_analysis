@@ -83,6 +83,27 @@ sudo docker run --network host rp_remote_analysis
 curl -X POST http://localhost:8000/ask/   -H "Content-Type: application/json"   -d '{"question": "Quels sont les 2 employés les mieux payés ?", "limit": 5}'
 ```
 
+### Résultat
+
+```bash
+{"question":"Quels sont les 2 employés les mieux payés ?","interpreted_sql":"SELECT * FROM data\nORDER BY salact DESC\nLIMIT 2;","data":[{"id":29.0,"sexe":"m","datenais":"1944-01-28T00:00:00","educ":19.0,"catemp":3.0,"salact":135000.0,"saldeb":79980.0,"temps":96.0,"exp":199.0,"minorite":0.0},{"id":32.0,"sexe":"m","datenais":"1954-01-28T00:00:00","educ":19.0,"catemp":3.0,"salact":110625.0,"saldeb":45000.0,"temps":96.0,"exp":120.0,"minorite":0.0}]}
+````
+Il donne en résultat donc : 
+- la question :
+  ```bash
+  "question":"Quels sont les 2 employés les mieux payés ?"
+  ```
+- la conversion en SQL de la requête :
+  ```bash
+  "interpreted_sql":"SELECT * FROM data\nORDER BY salact DESC\nLIMIT 2;"
+  ```
+- la réponse :
+  ```bash
+  "data":
+  [{"id":29.0,"sexe":"m","datenais":"1944-01-28T00:00:00","educ":19.0,"catemp":3.0,"salact":135000.0,"saldeb":79980.0,"temps":96.0,"exp":199.0,"minorite":0.0},{"id":32.0,"sexe":"m","datenais":"1954-01-28T00:00:00","educ":19.0,"catemp":3.0,"salact":110625.0,"saldeb":45000.0,"temps":96.0,"exp":120.0,"minorite":0.0}]
+  ```
+
+
 ### ✅ Accéder à la documentation interactive
 
 - Swagger UI : [http://localhost:8000/docs](http://localhost:8000/docs)
