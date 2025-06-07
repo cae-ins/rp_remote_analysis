@@ -1,4 +1,4 @@
-# 🦆 projet-duckdb-fastapi
+# RP 2021 Remote Analysis
 
 Ce projet est une API FastAPI conteneurisée qui permet d'interroger une base de données DuckDB en langage naturel via un LLM local (comme Ollama avec LLaMA 3). L'utilisateur peut envoyer des requêtes en français, qui sont traduites automatiquement en SQL.
 
